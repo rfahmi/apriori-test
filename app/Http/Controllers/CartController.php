@@ -23,6 +23,9 @@ class CartController extends Controller
 			}
 		}
 
+		// $data['items'] = ['A'];
+		// $data['recomendation'] = $apriori->predict($data['items']);
+
 		return response()->json([
 			'success' => true,
 			'message' => 'Success',
@@ -75,8 +78,6 @@ class CartController extends Controller
 
 	public function createRecomendationRule()
 	{
-		// $train = new AprioriTrain();
-		// dispatch($train);
 		AprioriTrain::dispatch();
 	}
 }

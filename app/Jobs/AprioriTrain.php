@@ -31,6 +31,18 @@ class AprioriTrain implements ShouldQueue
 				$transactions[$i] = TrxItem::where('trx_id', $transactions_header[$i]->trx_id)->pluck('item_id')->toArray();
 			}
 
+			//TEST
+			// $items = ['A', 'B', 'C', 'D'];
+			// $transactions = [
+			// 	['A', 'B'],
+			// 	['C', 'D'],
+			// 	['B', 'C'],
+			// 	['A', 'C'],
+			// 	['A', 'C'],
+			// 	['A', 'B', 'C'],
+			// 	['B', 'C', 'D'],
+			// ];
+
 			$apriori->setSupport(2);
 			$apriori->setConfidence(0.1);
 			$apriori->train($items, $transactions);
